@@ -1,0 +1,276 @@
+* {
+    font-family: "Chakra Petch", sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+    height: 100%;
+    background-color: #ffffd8;
+    color: #0f0f0f;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+
+
+/* body>div {
+    border: solid 1px rgb(119, 119, 119);
+} */
+
+.display-notes,
+.display-instrument {
+    /* margin-left: 500px; */
+    height: 30px;
+    width: 70px;
+}
+
+.note-button {
+    height: 39px;
+    width: 75px;
+    background-color: gray;
+    color: #fff;
+    padding: 10px 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.note-button.selected {
+    background-color: #28a745;
+    transition: background-color 0.3s ease;
+}
+
+.note-button.selected:hover {
+    background-color: #1d7a33;
+}
+
+.note-button:hover {
+    background-color: #555;
+}
+
+
+.current-note nav .sharp-symbol {
+    position: absolute;
+    top: 0;
+    font-size: 70%;
+}
+
+.current-note nav .octave-symbol {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    font-size: 60%;
+}
+
+
+
+
+
+.settings {
+    z-index: 1;
+    position: fixed;
+    text-align: center;
+    right: -20vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    transition: right 0.3s ease;
+}
+
+.settings:not(.show-settings) {
+    right: -20vw;
+}
+
+.settings.show-settings {
+    right: 0;
+}
+
+
+
+
+@media only screen and (min-width: 768px) {
+    .settings {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+}
+
+#noteForm {
+    font-size: 20px;
+}
+
+#intervalInput {
+    font-size: 15px;
+    height: 25px;
+    width: 70px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.tuner {
+    grid-column: span 0;
+}
+
+.notes-to-play {
+    font-weight: bold;
+    color: grey;
+    grid-column: span 4;
+    font-size: 2vw;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.info {
+    position: absolute;
+    grid-column: span 0;
+    top: 0px;
+    font-size: 3vh;
+}
+
+.current-note {
+    color: rgb(255, 86, 255);
+    font-size: 150px;
+    text-align: center;
+    position: relative;
+}
+
+
+.previous-notes {
+    text-align: right;
+    font-size: 40px;
+    grid-column: span 2;
+}
+
+.previous-notes .sharp-symbol {
+    position: relative;
+    top: -10px;
+    right: 10px;
+    font-size: 70%;
+}
+
+.previous-notes .octave-symbol {
+    position: relative;
+    top: 10px;
+    left: -10px;
+    font-size: 70%;
+}
+
+.next-notes {
+    margin-left: 30px;
+    text-align: left;
+    font-size: 50px;
+    grid-column: span 2;
+}
+
+.next-notes .sharp-symbol {
+    position: relative;
+    top: -10px;
+    font-size: 70%;
+}
+
+.next-notes .octave-symbol {
+    position: relative;
+    top: 10px;
+    left: -5px;
+    font-size: 70%;
+}
+
+.note-button {
+    font-size: 15px;
+}
+
+.settings .menu,
+.display-notes,
+.display-instrument {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 300px;
+    font-size: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.start-stop {
+    /* margin-top: 30vh; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.start-stop>button {
+    width: 200px;
+    height: 50px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+
+.menu:hover,
+.display-notes:hover,
+.display-instrument:hover {
+    background-color: #0056b3;
+}
+
+
+.display-notes:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.display-notes:not(:disabled):hover {
+    background-color: #0056b3;
+}
+
+
+input[disabled] {
+    background-color: #a0a0a0;
+    color: #000000;
+}
+
+label.custom-checkbox {
+    font-size: 14px;
+}
+
+button.menu:disabled,
+button.display-notes:disabled,
+input.custom-checkbox:disabled,
+.note-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: grey;
+    color: white;
+
+}
+
+button.menu:disabled:hover,
+button.display-notes:disabled:hover,
+input.custom-checkbox:disabled:hover,
+.note-button:disabled:hover {
+    background-color: rgb(83, 83, 83);
+}

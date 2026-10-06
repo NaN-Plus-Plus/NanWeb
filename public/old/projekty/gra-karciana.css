@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.screenshot {
+    width: 700px;
+    margin-right: 20px;
+}
+
+.projekt-info {
+    background-color: rgb(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    width: 600px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.projekt-info h2 {
+    margin-top: 0;
+}
+
+.projekt-info nav {
+    list-style: none;
+    padding: 0;
+}
+
+.links-container > div{ 
+    text-align: center;
+  }
+.links-container {
+    margin-bottom: 20px;
+}
+
+  .app-link, .repo-link {
+    padding: 20px 0;
+    text-align: center;
+    display: block;
+}
+
+.app-link a, .repo-link a {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.app-link a:hover, .repo-link a:hover {
+    transform: scale(1.1);
+    background-color: #555;
+}

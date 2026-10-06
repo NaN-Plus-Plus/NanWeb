@@ -1,0 +1,28 @@
+.dark-mode {
+    background-color: #121212;  
+    color: #f1f1f1;
+}
+
+body.dark-mode{
+    background-color: #121212;
+}
+
+#mode-toggle {
+    position: absolute;
+    top: 1vh;
+    right: 0.5vw;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#mode-icon {
+    
+    font-size: 5vh;
+    color: #121212;
+    transition: color 0.3s ease;
+}
+
+.dark-mode .modal-content {
+    background-color: rgba(18, 18, 18, 0.8);
+}

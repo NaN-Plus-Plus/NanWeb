@@ -1,0 +1,56 @@
+.bass {
+    width: 20px;
+    /* display: none; */
+    position: relative;
+}
+
+.bass img {
+    position: absolute;
+    top: 0;
+    left: 40px;
+}
+
+.notes-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* display: none; */
+}
+
+.option1b,
+.option2b,
+.option3b,
+.option4b,
+.option7b {
+    display: flex;
+    position: absolute;
+
+}
+
+.option1b {
+    top: 112px;
+}
+
+.option2b {
+    top: 88px;
+}
+
+.option3b {
+    top: 65px;
+}
+
+.option4b {
+    top: 40px;
+}
+
+.option7b {
+    top: 5px;
+}
+
+.bass .cheatsheet {
+    position: absolute;
+    left: 50px;
+   top: 0px;
+   font-size: 20px;
+   width: 300px;
+}

@@ -1,0 +1,11 @@
+.piano {
+    /* width: 20px; */
+    /* display: none; */
+    position: relative;
+}
+
+.piano img {
+    position: absolute;
+    /* top: 0; */
+    /* left: 40px; */
+}

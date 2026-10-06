@@ -1,0 +1,66 @@
+.fretboard {
+    width: 20px;
+    /* display: none; */
+    position: relative;
+}
+
+.fretboard img {
+    position: absolute;
+    top: 0;
+    left: 40px;
+}
+
+.notes-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* display: none; */
+}
+
+.option1t,
+.option2t,
+.option3t,
+.option4t,
+.option5t,
+.option6t,
+.option7t {
+    display: flex;
+    position: absolute;
+
+}
+
+.option1t {
+    top: 140px;
+}
+
+.option2t {
+    top: 115px;
+}
+
+.option3t {
+    top: 90px;
+}
+
+.option4t {
+    top: 65px;
+}
+
+.option5t {
+    top: 40px;
+}
+
+.option6t {
+    top: 15px;
+}
+
+.option7t {
+    top: -15px;
+}
+
+.cheatsheet {
+    position: absolute;
+    left: 50px;
+   top: -20px;
+   font-size: 20px;
+   width: 300px;
+}

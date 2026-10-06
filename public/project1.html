@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/img/mini_l.png">
+    <title>Hackaton | NaN++</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Trebuchet MS', sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            color: #1111;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            margin-bottom: 3rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            color: #45DDFF;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .back-btn:hover {
+            color: #FF45C7;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #2d3436;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #636e72;
+            font-size: 0.9rem;
+        }
+
+        .status-badge {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background-color: #111111;
+            color: #dad7db;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #2d3436;
+            font-weight: 600;
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #f1f2f6;
+        }
+
+        .info-label {
+            color: #636e72;
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: #2d3436;
+            font-weight: 500;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #2d3436;
+            font-weight: 600;
+        }
+
+        .section p {
+            color: #636e72;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: #f8f9fa;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: #636e72;
+            border: 1px solid #e9ecef;
+        }
+
+        .milestone {
+            padding: 1rem 0;
+            border-bottom: 1px solid #f1f2f6;
+        }
+
+        .milestone:last-child {
+            border-bottom: none;
+        }
+
+        .milestone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .milestone-title {
+            font-weight: 500;
+            color: #2d3436;
+        }
+
+        .milestone-date {
+            color: #636e72;
+            font-size: 0.8rem;
+        }
+
+        .milestone-description {
+            color: #636e72;
+            font-size: 0.9rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #f1f2f6;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e9ecef;
+            color: #636e72;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .main-content {
+                padding: 1.5rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="back-btn">
+                <span>←</span>Powrót
+            </a>
+            <h1>Hackaton</h1>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <span class="status-badge">W trakcie realizacji</span>
+                </div>
+                <div class="meta-item">
+                    <span>Rozpoczęcie: ###</span>
+                </div>
+                <div class="meta-item">
+                    <span>Planowane zakończenie: ###</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-grid">
+            <div class="main-content">
+                 <div class="section">
+                    <h2>Cel projektu</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque asperiores totam modi minima saepe illo eum laboriosam, atque aliquam quaerat voluptatibus facere beatae vero quas mollitia labore voluptates reiciendis maiores.</p>
+                </div>
+
+                <div class="section">
+                    <h2>Opis projektu</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed nesciunt numquam assumenda veritatis temporibus dolor velit, nemo non officiis sit laudantium doloribus hic asperiores, tempore modi cum corrupti facere! Voluptatem.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui vero vitae, dolore exercitationem est suscipit reprehenderit similique, odio dolorum saepe minima quod sint a totam voluptates minus illum. Atque, unde.</p>
+                </div>
+
+                <div class="section">
+                    <h2>Technologie</h2>
+                    <div class="tech-tags">
+                        <span class="tech-tag">###</span>
+                        <span class="tech-tag">###</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Kamienie milowe</h2>
+                    <div class="milestones">
+                        <div class="milestone">
+                            <div class="milestone-header">
+                                <span class="milestone-title">Nazwa</span>
+                                <span class="milestone-date">Data</span>
+                            </div>
+                            <p class="milestone-description">Opis.</p>
+                        </div>
+                        <div class="milestone">
+                            <div class="milestone-header">
+                                <span class="milestone-title">Nazwa</span>
+                                <span class="milestone-date">Data</span>
+                            </div>
+                            <p class="milestone-description">Opis.</p>
+                        </div>
+                        <div class="milestone">
+                            <div class="milestone-header">
+                                <span class="milestone-title">Nazwa</span>
+                                <span class="milestone-date">Data</span>
+                            </div>
+                            <p class="milestone-description">Opis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                
+
+                <div class="card">
+                    <h3>Statystyki</h3>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-label">Czas trwania:</span>
+                            <span class="info-value">###</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Liczba commitów:</span>
+                            <span class="info-value">###</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Dokumenty</h3>
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <a href="#" style="color: #45DDFF; text-decoration: none; font-size: 0.9rem;">Dokumentacja technicza</a>
+                        <a href="#" style="color: #45DDFF; text-decoration: none; font-size: 0.9rem;">Repo</a>
+                        <a href="#" style="color: #45DDFF; text-decoration: none; font-size: 0.9rem;">Wyniki</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Koło Naukowe NaN++</p>
+        </footer>
+    </div>
+</body>
+</html>

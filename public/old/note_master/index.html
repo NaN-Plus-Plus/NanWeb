@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NaN++</title>
+  <link rel="icon" href="icon.png" type="image/png">
+  <title>Trener nut</title>
+  <link rel="stylesheet" href="tuner/style.css" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/dark-mode.css" />
+  <link rel="stylesheet" href="styles/checkbox.css" />
+  <link rel="stylesheet" href="styles/advanced-settings.css" />
+  <link href="styles/mobile-style.css" rel="stylesheet">
+  <link href="styles/fretboard.css" rel="stylesheet">
+  <link href="styles/piano.css" rel="stylesheet">
+  <link href="styles/bass.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <button id="mode-toggle"><i id="mode-icon" class="fas fa-sun"></i></button>
+
+
+  <div class="tuner">
+
+    <canvas class="frequency-bars"></canvas>
+    <div class="meter">
+      <div class="meter-dot"></div>
+      <div class="meter-pointer"></div>
+    </div>
+    <div class="notes">
+      <div class="notes-list"></div>
+      <div class="frequency">
+        <span>Hz</span>
+      </div>
+    </div>
+    <div class="a4">A<sub>4</sub> = <span>440</span> Hz</div>
+    <label class="auto">
+      Auto
+      <input type="checkbox" checked />
+    </label>
+  </div>
+
+
+
+  <div class="notes-to-play">
+    <nav class="previous-notes"></nav>
+    <nav class="current-note"></nav>
+    <nav class="next-notes"></nav>
+  </div>
+
+  <div>
+
+  </div>
+
+
+
+
+  <div class="start-stop">
+    <button id="start-button" class="display-notes" onclick="startProgram()">Start</button>
+    <button class="display-notes" onclick="stopDisplayingNotes()">Stop</button>
+    <button class="display-notes" onclick="openAdvancedSettingsWindow()">Ustawienia</button>
+  </div>
+
+
+
+  <div class="fretboard" id="fretboardContainer">
+    <img src="img/fretboard.png" alt="fretboard">
+    <img class="notes-image" src="img/6th-string-wholes.png" alt="6th-string-wholes" id="6th-string-wholes">
+    <img class="notes-image" src="img/6th-string-sharps.png" alt="6th-string-sharps" id="6th-string-sharps">
+    <img class="notes-image" src="img/5th-string-wholes.png" alt="5th-string-wholes" id="5th-string-wholes">
+    <img class="notes-image" src="img/5th-string-sharps.png" alt="5th-string-sharps" id="5th-string-sharps">
+    <img class="notes-image" src="img/4th-string-wholes.png" alt="4th-string-wholes" id="4th-string-wholes">
+    <img class="notes-image" src="img/4th-string-sharps.png" alt="4th-string-sharps" id="4th-string-sharps">
+    <img class="notes-image" src="img/3rd-string-wholes.png" alt="3rd-string-wholes" id="3rd-string-wholes">
+    <img class="notes-image" src="img/3rd-string-sharps.png" alt="3rd-string-sharps" id="3rd-string-sharps">
+    <img class="notes-image" src="img/2nd-string-wholes.png" alt="2nd-string-wholes" id="2nd-string-wholes">
+    <img class="notes-image" src="img/2nd-string-sharps.png" alt="2nd-string-sharps" id="2nd-string-sharps">
+    <img class="notes-image" src="img/1st-string-wholes.png" alt="1st-string-wholes" id="1st-string-wholes">
+    <img class="notes-image" src="img/1st-string-sharps.png" alt="1st-string-sharps" id="1st-string-sharps">
+    <nav class="option7t">
+      <input type="checkbox" id="toggleWholeCheckbox" onchange="toggleAndCheck(this)" checked>
+      <label for="toggleWholeCheckbox"></label>
+
+      <input type="checkbox" id="toggleSharpCheckbox" onchange="toggleAndCheck2(this)" checked>
+      <label for="toggleSharpCheckbox"></label>
+    </nav>
+    <nav class="option6t">
+      <input type="checkbox" id="stringHighECheckboxToggle" checked>
+      <label for="stringHighECheckboxToggle"></label>
+      <input type="checkbox" id="stringHighECheckboxToggle2" checked>
+      <label for="stringHighECheckboxToggle2"></label>
+    </nav>
+    <nav class="option5t">
+      <input type="checkbox" id="stringBCheckboxToggle" checked>
+      <label for="stringBCheckboxToggle"></label>
+      <input type="checkbox" id="stringBCheckboxToggle2" checked>
+      <label for="stringBCheckboxToggle2"></label>
+    </nav>
+    <nav class="option4t">
+      <input type="checkbox" id="stringGCheckboxToggle" checked>
+      <label for="stringGCheckboxToggle"></label>
+      <input type="checkbox" id="stringGCheckboxToggle2" checked>
+      <label for="stringGCheckboxToggle2"></label>
+    </nav>
+    <nav class="option3t">
+      <input type="checkbox" id="stringDCheckboxToggle" checked>
+      <label for="stringDCheckboxToggle"></label>
+      <input type="checkbox" id="stringDCheckboxToggle2" checked>
+      <label for="stringDCheckboxToggle2"></label>
+    </nav>
+    <nav class="option2t">
+      <input type="checkbox" id="stringACheckboxToggle" checked>
+      <label for="stringACheckboxToggle"></label>
+      <input type="checkbox" id="stringACheckboxToggle2" checked>
+      <label for="stringACheckboxToggle2"></label>
+    </nav>
+    <nav class="option1t">
+      <input type="checkbox" id="stringECheckboxToggle" checked>
+      <label for="stringECheckboxToggle"></label>
+      <input type="checkbox" id="stringECheckboxToggle2" checked>
+      <label for="stringECheckboxToggle2"></label>
+    </nav>
+    <div class="cheatsheet">Spis dźwięków na gryfie</div>
+  </div>
+
+  <div class="piano" id="piano-container" style="display: none;">
+    <img src="img/piano.png" alt="piano">
+  </div>
+
+  <div class="bass" id="bass-container" style="display: none;">
+    <img src="img/bass.png" alt="bass">
+    <img class="notes-image" src="img/4th-bass-wholes.png" alt="4th-bass-wholes" id="4th-bass-wholes">
+    <img class="notes-image" src="img/4th-bass-sharps.png" alt="4th-bass-sharps" id="4th-bass-sharps">
+    <img class="notes-image" src="img/3rd-bass-wholes.png" alt="3rd-bass-wholes" id="3rd-bass-wholes">
+    <img class="notes-image" src="img/3rd-bass-sharps.png" alt="3rd-bass-sharps" id="3rd-bass-sharps">
+    <img class="notes-image" src="img/2nd-bass-wholes.png" alt="2nd-bass-wholes" id="2nd-bass-wholes">
+    <img class="notes-image" src="img/2nd-bass-sharps.png" alt="2nd-bass-sharps" id="2nd-bass-sharps">
+    <img class="notes-image" src="img/1st-bass-wholes.png" alt="1st-bass-wholes" id="1st-bass-wholes">
+    <img class="notes-image" src="img/1st-bass-sharps.png" alt="1st-bass-sharps" id="1st-bass-sharps">
+    <nav class="option7b">
+      <input type="checkbox" id="toggleWholeBassCheckbox" onchange="toggleAndCheckBass(this)" checked>
+      <label for="toggleWholeBassCheckbox"></label>
+
+      <input type="checkbox" id="toggleSharpBassCheckbox" onchange="toggleAndCheckBass2(this)" checked>
+      <label for="toggleSharpBassCheckbox"></label>
+    </nav>
+    <nav class="option4b">
+      <input type="checkbox" id="GBassCheckboxToggle" checked>
+      <label for="GBassCheckboxToggle"></label>
+      <input type="checkbox" id="GBassCheckboxToggle2" checked>
+      <label for="GBassCheckboxToggle2"></label>
+    </nav>
+    <nav class="option3b">
+      <input type="checkbox" id="DBassCheckboxToggle" checked>
+      <label for="DBassCheckboxToggle"></label>
+      <input type="checkbox" id="DBassCheckboxToggle2" checked>
+      <label for="DBassCheckboxToggle2"></label>
+    </nav>
+    <nav class="option2b">
+      <input type="checkbox" id="ABassCheckboxToggle" checked>
+      <label for="ABassCheckboxToggle"></label>
+      <input type="checkbox" id="ABassCheckboxToggle2" checked>
+      <label for="ABassCheckboxToggle2"></label>
+    </nav>
+    <nav class="option1b">
+      <input type="checkbox" id="EBassCheckboxToggle" checked>
+      <label for="EBassCheckboxToggle"></label>
+      <input type="checkbox" id="EBassCheckboxToggle2" checked>
+      <label for="EBassCheckboxToggle2"></label>
+    </nav>
+    <div class="cheatsheet">Spis dźwięków na gryfie</div>
+  </div>
+
+
+
+  <div id="advancedSettingsWindow" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeAdvancedSettingsWindow()">&times;</span>
+      <div class="settings2">
+        <h2>Częstotliwość wyświetlania dźwięków</h2>
+        <nav>
+          <label class="custom-checkbox" for="Interval">
+            <input type="checkbox" id="Interval" checked>
+            <span class="checkmark"></span>
+            Interwał (sek):
+          </label>
+          <input id="intervalInput" type="number" step="0.05" min="0.3" max="10.0" value="3.0"
+            placeholder="Interwał (sek)" />
+        </nav>
+        <nav>
+          lub
+        </nav>
+        <nav>
+          <label class="custom-checkbox" for="noInterval">
+            <input type="checkbox" id="noInterval"> Zmień dźwięk po zagraniu dobrze
+            <span class="checkmark"></span>
+          </label>
+        </nav>
+
+
+        <h2>Instrumenty pomocnicze</h2>
+        <img src="img/guitar-icon.png" class="instrument-icon" id="toggleFretboardButton">
+        <img src="img/keyboard-icon.png" class="instrument-icon" id="togglePianoButton">
+        <img src="img/bass-icon.png" class="instrument-icon" id="toggleBassButton">
+        <h2>Notacja</h2>
+        <nav>
+          <label class="custom-checkbox note-type" for="letters">
+            <input type="checkbox" id="letters" checked> <span class="checkmark"></span> Litery
+          </label>
+        </nav>
+        <nav>
+          <label class="custom-checkbox note-type" for="notes">
+            <input type="checkbox" id="notes"> <span class="checkmark"></span> Nuty
+          </label>
+        </nav>
+
+
+
+        <h2>Dźwięki do wyświetlania</h2>
+        <div class="simple-vs-advanced">
+          <div class="left-section">
+            <form id="noteForm">
+              <h3><input type="checkbox" id="simpleCheckbox" checked>Proste</h3>
+              <!-- loop to generate button for each note -->
+              <script>
+                const notes = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'];
+                notes.forEach(note => {
+                  const noteHtml = note.replace('♯', '<span class="sharp-symbol">♯</span>');
+                  document.write(`
+              <label>
+                <input type="checkbox" name="note" value="${note}" style="display: none; " checked />
+                <button type="button" onclick="toggleNote('${note}')" class="note-button selected" value="${note}">${noteHtml}</button>
+              </label>
+            `);
+                });
+              </script>
+            </form>
+
+            <button class="menu" onclick="selectAllNotes()">Wszystkie</button>
+            <button class="menu" onclick="selectAllNaturalNotes()">Całe</button>
+            <button class="menu" onclick="selectAllSharpNotes()">Krzyżyki</button>
+            <button class="menu" onclick="unselectAllNotes()">Wyczyść</button>
+            <nav>
+              <label class="custom-checkbox">
+                <input type="checkbox" id="acceptAnyOctave" checked>Akceptuj dźwięk niezależnie od zagranej oktawy
+                <span class="checkmark"></span>
+              </label>
+            </nav>
+            <nav>
+              <label class="custom-checkbox" for="withOctave">
+                <input type="checkbox" id="withOctave">Akceptuj wyłącznie konkretną oktawę:
+                <span class="checkmark" id="withOctave"></span>
+              </label>
+              <input id="octaveInput" type="number" step="1" min="1" max="8" value="3" placeholder="oktawa (sek)"
+                disabled />
+            </nav>
+          </div>
+          <div class="right-section">
+            <h3><input type="checkbox" id="applyAdvanced">Zaawansowane</h3>
+            <div class="octave-controls">
+              <button onclick="advancedSelectAllNotes()">Zaznacz wszystkie nuty</button>
+              <button onclick="advancedSelectWholeNotes()">Zaznacz tylko całe</button>
+              <button onclick="advancedSelectSharpNotes()">Zaznacz tylko krzyżyki</button>
+              <button onclick="advancedUnselectAllNotes()">Wyczyść</button>
+            </div>
+            <div class="instrument-buttons">
+              <button id="guitarButton">Gitara</button>
+              <div id="guitarOptions" style="display: none; max-height: 200px; overflow-y: auto;">
+                <ul>
+                  <li><button id="guitar24FretsButton">Gitara 24 progi</button></li>
+                  <li><button id="guitar22FretsButton">Gitara 22 progi</button></li>
+                  <li><button id="guitar21FretsButton">Gitara 21 progów</button></li>
+                  <li><button id="guitar7StringsButton">Gitara 7 strunowa</button></li>
+                  <li><button id="guitar8StringsButton">Gitara 8 strunowa</button></li>
+                  <li><button id="guitarEStringButton">Struna niska E</button></li>
+                  <li><button id="guitarEString2OctavesButton">Struna niska E - 2 oktawy</button></li>
+                  <li><button id="guitarDropDStringButton">Struna niska - drop D</button></li>
+                  <li><button id="guitarDropDString2OctavesButton">Struna niska - drop D - 2 oktawy</button></li>
+                  <li><button id="guitarAStringButton">Struna A</button></li>
+                  <li><button id="guitarAString2OctavesButton">Struna A - 2 oktawy</button></li>
+                  <li><button id="guitarDStringButton">Struna D</button></li>
+                  <li><button id="guitarDString2OctavesButton">Struna D - 2 oktawy</button></li>
+                  <li><button id="guitarGStringButton">Struna G</button></li>
+                  <li><button id="guitarGString2OctavesButton">Struna G - 2 oktawy</button></li>
+                  <li><button id="guitarBStringButton">Struna B</button></li>
+                  <li><button id="guitarBString2OctavesButton">Struna B - 2 oktawy</button></li>
+                  <li><button id="guitarHighEStringButton">Struna wysoka E</button></li>
+                  <li><button id="guitarHighEString2OctavesButton">Struna wysoka E - 2 oktawy</button></li>
+                </ul>
+              </div>
+
+              <!--instrument buttons are generated  -->
+            </div>
+            <div id="noteButtonsContainer">
+              <!-- all buttons are initially generated here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <script src="scripts/settings.js"></script>
+  <script src="scripts/displaying-notes.js"></script>
+  <script src="scripts/playing-notes.js"></script>
+  <script src="scripts/advanced-settings.js"></script>
+  <script src="scripts/select-instruments.js"></script>
+  <script src="scripts/fretboard.js"></script>
+  <script src="scripts/piano.js"></script>
+  <script src="scripts/bass.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aubiojs@0.1.1/build/aubio.min.js"></script>
+  <script src="tuner/tuner.js"></script>
+  <script src="tuner/meter.js"></script>
+  <script src="tuner/frequency-bars.js"></script>
+  <script src="tuner/notes.js"></script>
+  <script src="tuner/app.js"></script>
+  <script src="styles/dark-mode.js"></script>
+</body>
+
+</html>

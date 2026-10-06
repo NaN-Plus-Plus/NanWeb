@@ -1,0 +1,93 @@
+@media only screen and (max-width: 768px) {
+
+    body {
+        display: inline;
+        width: 100vw;
+    }
+
+    .note {
+        font-size: 15vw;
+        padding-right: 5vw;
+        padding-left: 1vw;
+    }
+
+    .notes {
+        position: absolute;
+        width: 50vw;
+        top: 130px;
+        left: 50px;
+    }
+
+
+    .notes div+div {
+        margin-top: -10px;
+    }
+
+    .meter {
+        left: 90px;
+        top: 40px;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 5vh auto;
+    }
+
+    .frequency {
+        font-size: 5vw;
+        top: 200px;
+    }
+
+
+    .settings {
+        right: -100vw;
+        margin-top: 480px;
+        position: absolute;
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .settings.hidden {
+        display: none;
+    }
+
+    .settings:not(.show-settings) {
+        right: -100vw;
+    }
+
+    .settings.show-settings {
+        right: 0;
+    }
+
+
+    .display-notes {
+        position: relative;
+        margin-left: 0;
+    }
+
+    .notes-to-play {
+        height: 20vh;
+        width: 100vw;
+        margin-top: 230px;
+    }
+
+    .frequency-bars {
+        height: 0;
+    }
+
+    .current-note {
+        font-size: 30vw;
+    }
+
+    .previous-notes {
+        font-size: 5vw;
+    }
+
+    .next-notes {
+        font-size: 8vw;
+    }
+
+    
+.start-stop>button {
+    z-index: 2;
+    font-size: 3vh;
+}
+}
