@@ -440,3 +440,16 @@ hr {
     height: 10%;
   }
 }
+
+.projects-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: left;
+    align-items: flex-start;
+}
+
+.projects-container .project {
+    flex: 0 1 300px;
+}

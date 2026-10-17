@@ -22,12 +22,26 @@ document.addEventListener("DOMContentLoaded", () => {
            <br><br><strong>Pozdrawiamy,
            <br>Ekipa NaN++ ;]</strong></p>`,
 
-    projekty:  `<h1>PROJEKTY</h1><hr>
-                <div class="project" onclick="window.open('/archiwum.html', '_blank')">
-                <div class="overlay"><span>Archiwum</span></div></div>
-                <!--<div class="project" onclick="window.open('/project1.html', '_blank')">
-                <img src="/img/placeholder.png" alt="Project 1">
-                <div class="overlay"><span>Projekt 1</span></div></div>-->`,
+    projekty: `<h1>PROJEKTY</h1><hr>
+
+    <div class="projects-container">
+
+        <div class="project" onclick="window.open('/archiwum.html', '_blank')">
+            <div class="overlay"><span>Archiwum</span></div>
+        </div>
+
+        <div class="project" onclick="window.open('/PanicAtTheDisco.html', '_blank')">
+            <div class="overlay"><span>Panic! At The Disco</span></div>
+        </div>
+
+        <!--
+        <div class="project" onclick="window.open('/project1.html', '_blank')">
+            <img src="/img/placeholder.png" alt="Project 1">
+            <div class="overlay"><span>Projekt 1</span></div>
+        </div>
+        -->
+
+    </div>`,
 
     aktualnosci: `<h1>AKTUALNOŚCI</h1><hr>
                   <section class="updates">
@@ -49,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <div class="update-content">
                   <p>Serdecznie zapraszamy na spotkanie organizacyjne odrestaurowanego koła Nan++ :]<br><br>Kiedy: 13.11.2025 o 16.15 <br> Gdzie: sala 1.18</p>
                   </div></div></section>`,
+
 
     grafik: `<h1>GRAFIK</h1><hr><br>
              <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTvSsCxtWgxzPq3UKUHIDSIBlP8SQc7px8XsQhOzmitiiitusalgGbn4nX3L-4WNrQC4bcBy6CA4C4l/pubhtml?widget=true&amp;headers=false" width="900" height="550"></iframe>`,
