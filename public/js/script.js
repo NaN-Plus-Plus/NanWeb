@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     kontakt: `<h1>KONTAKT</h1><hr><p>Dołącz do nas!
               <br><br>Masz pytania? Chcesz się przywitać? A może od razu chcesz dołączyć? Śmiało, napisz do nas! Jesteśmy tu:</p>
               <br><div class="info"><p><strong>E-mail:</strong><a href="mailto:nanplusplus@studms.ug.edu.pl" target="_blank"><img src="/img/icons/email.png" width="5%" height="5%"></a></p></div>
-              <div class="info"><p><strong>Discord:</strong><a href="https://discord.gg/Vk3N6xtBrq" target="_blank"><img src="/img/icons/discord.png" width="5%" height="5%"></a></p></div>
+              <div class="info"><p><strong>Discord:</strong><a href="https://discord.gg/zrScvMRZRR" target="_blank"><img src="/img/icons/discord.png" width="5%" height="5%"></a></p></div>
               <div class="info"><p><strong>Instagram:</strong><a href="https://www.instagram.com/nanplusplus/" target="_blank"><img src="/img/icons/instagram.png" width="5%" height="5%"></a></p></div>
               <div class="info"><p><strong>Facebook:</strong><a href="https://www.facebook.com/share/1CnGTb1qGf/" target="_blank"><img src="/img/icons/facebook.png" width="5%" height="5%"></a></p></div>
               <div class="info"><p><strong>Github:</strong><a href="https://github.com/NaN-Plus-Plus" target="_blank"><img src="/img/icons/github.png" width="5%" height="5%"></a></p></div>
