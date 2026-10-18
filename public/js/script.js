@@ -44,11 +44,22 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>`,
 
     aktualnosci: `<h1>AKTUALNOŚCI</h1><hr>
+
                   <section class="updates">
                   <div class="update-list">
                   <div class="update">
                   <div class="update-header">
-                  <span class="update-title">Pierwsze spotkanie</span>
+                  <span class="update-title">Pierwsze spotkanie w roku 2026</span>
+                  <span class="arrow">▼</span></div>
+                  <div class="update-content">
+                  <p>Zapraszamy na pierwsze spotkanie koła w tym roku!<br><br>Kiedy: 22.11.2026 o 10:00 <br> Gdzie: sala 2.05</p>
+                  </div></div></section>
+                  
+                  <section class="updates">
+                  <div class="update-list">
+                  <div class="update">
+                  <div class="update-header">
+                  <span class="update-title">Pierwsze spotkanie koła</span>
                   <span class="arrow">▼</span></div>
                   <div class="update-content">
                   <p>Serdecznie zapraszamy na pierwsze spotkanie koła.<br><br>Kiedy: 18.11.2025 o 16.15 <br> Gdzie: sala 3.13</p>
@@ -74,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="info"><p><strong>Discord:</strong><a href="https://discord.gg/Vk3N6xtBrq" target="_blank"><img src="/img/icons/discord.png" width="5%" height="5%"></a></p></div>
               <div class="info"><p><strong>Instagram:</strong><a href="https://www.instagram.com/nanplusplus/" target="_blank"><img src="/img/icons/instagram.png" width="5%" height="5%"></a></p></div>
               <div class="info"><p><strong>Facebook:</strong><a href="https://www.facebook.com/share/1CnGTb1qGf/" target="_blank"><img src="/img/icons/facebook.png" width="5%" height="5%"></a></p></div>
-              <div class="info"><p><strong>Github:</strong><a href="https://github.com/sparrow0p/NaNPlusPlus/" target="_blank"><img src="/img/icons/github.png" width="5%" height="5%"></a></p></div>
+              <div class="info"><p><strong>Github:</strong><a href="https://github.com/NaN-Plus-Plus" target="_blank"><img src="/img/icons/github.png" width="5%" height="5%"></a></p></div>
               <br><p>© 2026 Koło Naukowe NaN++</p>`
   };
 
