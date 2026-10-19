@@ -1,16 +1,23 @@
-document.querySelectorAll('.menu button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    btn.classList.add('active');
-    setTimeout(() => btn.classList.remove('active'), 200);
-  });
-});
-
 document.addEventListener("DOMContentLoaded", () => {
   const content = document.getElementById("content");
   const menuButtons = document.querySelectorAll(".menu button");
   const logo = document.getElementById("logo");
   const burger = document.getElementById("burger");
   const menu = document.getElementById("menu");
+
+  const updateItem = (title, body) => `
+    <div class="update">
+      <div class="update-header">
+        <span class="update-title">${title}</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="update-content"><p>${body}</p></div>
+    </div>`;
+
+  const contactItem = (label, href, icon) => `
+    <div class="info"><p><strong>${label}:</strong>
+      <a href="${href}" target="_blank" rel="noopener"><img src="/img/icons/${icon}.png" alt="${label}"></a>
+    </p></div>`;
 
   const pages = {
     welcome: `<h2>Witamy na stronie<br> koła NaN</h2>`,
@@ -23,172 +30,128 @@ document.addEventListener("DOMContentLoaded", () => {
            <br>Ekipa NaN++ ;]</strong></p>`,
 
     projekty: `<h1>PROJEKTY</h1><hr>
-
-    <div class="projects-container">
-
-        <div class="project" onclick="window.open('/archiwum.html', '_blank')">
-            <div class="overlay"><span>Archiwum</span></div>
-        </div>
-
-        <div class="project" onclick="window.open('/PanicAtTheDisco.html', '_blank')">
-            <div class="overlay"><span>Panic! At The Disco</span></div>
-        </div>
-
-        <!--
-        <div class="project" onclick="window.open('/project1.html', '_blank')">
-            <img src="/img/placeholder.png" alt="Project 1">
-            <div class="overlay"><span>Projekt 1</span></div>
-        </div>
-        -->
-
-    </div>`,
+      <div class="projects-container">
+        <a class="project" href="/PanicAtTheDisco.html" target="_blank" rel="noopener">
+          <div class="overlay"><span>Panic! At The Disco</span></div>
+        </a>
+      </div>`,
 
     aktualnosci: `<h1>AKTUALNOŚCI</h1><hr>
+      <section class="updates">
+        <div class="update-list">
+          ${updateItem("Pierwsze spotkanie w roku 2026", "Zapraszamy na pierwsze spotkanie koła w tym roku!<br><br>Kiedy: 22.11.2026 o 10:00 <br> Gdzie: sala 2.05")}
+          ${updateItem("Pierwsze spotkanie koła", "Serdecznie zapraszamy na pierwsze spotkanie koła.<br><br>Kiedy: 18.11.2025 o 16.15 <br> Gdzie: sala 3.13")}
+          ${updateItem("Spotkanie organizacyjne", "Serdecznie zapraszamy na spotkanie organizacyjne odrestaurowanego koła Nan++ :]<br><br>Kiedy: 13.11.2025 o 16.15 <br> Gdzie: sala 1.18")}
+        </div>
+      </section>`,
 
-                  <section class="updates">
-                  <div class="update-list">
-                  <div class="update">
-                  <div class="update-header">
-                  <span class="update-title">Pierwsze spotkanie w roku 2026</span>
-                  <span class="arrow">▼</span></div>
-                  <div class="update-content">
-                  <p>Zapraszamy na pierwsze spotkanie koła w tym roku!<br><br>Kiedy: 22.11.2026 o 10:00 <br> Gdzie: sala 2.05</p>
-                  </div></div></section>
-                  
-                  <section class="updates">
-                  <div class="update-list">
-                  <div class="update">
-                  <div class="update-header">
-                  <span class="update-title">Pierwsze spotkanie koła</span>
-                  <span class="arrow">▼</span></div>
-                  <div class="update-content">
-                  <p>Serdecznie zapraszamy na pierwsze spotkanie koła.<br><br>Kiedy: 18.11.2025 o 16.15 <br> Gdzie: sala 3.13</p>
-                  </div></div></section>
-    
-                  <section class="updates">
-                  <div class="update-list">
-                  <div class="update">
-                  <div class="update-header">
-                  <span class="update-title">Spotkanie organizacyjne</span>
-                  <span class="arrow">▼</span></div>
-                  <div class="update-content">
-                  <p>Serdecznie zapraszamy na spotkanie organizacyjne odrestaurowanego koła Nan++ :]<br><br>Kiedy: 13.11.2025 o 16.15 <br> Gdzie: sala 1.18</p>
-                  </div></div></section>`,
+    grafik: `<h1>GRAFIK</h1><hr>
+      <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTvSsCxtWgxzPq3UKUHIDSIBlP8SQc7px8XsQhOzmitiiitusalgGbn4nX3L-4WNrQC4bcBy6CA4C4l/pubhtml" target="_blank" rel="noopener">Otwórz grafik w nowej karcie ↗</a>
+      <div class="sheet-wrap">
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTvSsCxtWgxzPq3UKUHIDSIBlP8SQc7px8XsQhOzmitiiitusalgGbn4nX3L-4WNrQC4bcBy6CA4C4l/pubhtml?widget=true&amp;headers=false" loading="lazy"></iframe>
+      </div>`,
 
-
-    grafik: `<h1>GRAFIK</h1><hr><br>
-             <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTvSsCxtWgxzPq3UKUHIDSIBlP8SQc7px8XsQhOzmitiiitusalgGbn4nX3L-4WNrQC4bcBy6CA4C4l/pubhtml?widget=true&amp;headers=false" width="900" height="550"></iframe>`,
-
-    kontakt: `<h1>KONTAKT</h1><hr><p>Dołącz do nas!
-              <br><br>Masz pytania? Chcesz się przywitać? A może od razu chcesz dołączyć? Śmiało, napisz do nas! Jesteśmy tu:</p>
-              <br><div class="info"><p><strong>E-mail:</strong><a href="mailto:nanplusplus@studms.ug.edu.pl" target="_blank"><img src="/img/icons/email.png" width="5%" height="5%"></a></p></div>
-              <div class="info"><p><strong>Discord:</strong><a href="https://discord.gg/zrScvMRZRR" target="_blank"><img src="/img/icons/discord.png" width="5%" height="5%"></a></p></div>
-              <div class="info"><p><strong>Instagram:</strong><a href="https://www.instagram.com/nanplusplus/" target="_blank"><img src="/img/icons/instagram.png" width="5%" height="5%"></a></p></div>
-              <div class="info"><p><strong>Facebook:</strong><a href="https://www.facebook.com/share/1CnGTb1qGf/" target="_blank"><img src="/img/icons/facebook.png" width="5%" height="5%"></a></p></div>
-              <div class="info"><p><strong>Github:</strong><a href="https://github.com/NaN-Plus-Plus" target="_blank"><img src="/img/icons/github.png" width="5%" height="5%"></a></p></div>
-              <br><p>© 2026 Koło Naukowe NaN++</p>`
+    kontakt: `<h1>KONTAKT</h1><hr>
+      <p>Dołącz do nas!<br><br>Masz pytania? Chcesz się przywitać? A może od razu chcesz dołączyć? Śmiało, napisz do nas! Jesteśmy tu:</p><br>
+      ${contactItem("E-mail", "mailto:nanplusplus@studms.ug.edu.pl", "email")}
+      ${contactItem("Discord", "https://discord.gg/zrScvMRZRR", "discord")}
+      ${contactItem("Instagram", "https://www.instagram.com/nanplusplus/", "instagram")}
+      ${contactItem("Facebook", "https://www.facebook.com/share/1CnGTb1qGf/", "facebook")}
+      ${contactItem("Github", "https://github.com/NaN-Plus-Plus", "github")}
+      <br><p>© 2026 Koło Naukowe NaN++</p>`
   };
 
   function createContentSymbols() {
-    
-    const existingSymbols = content.querySelectorAll('.content-symbol');
-    existingSymbols.forEach(symbol => symbol.remove());
+    content.querySelectorAll(".content-symbol").forEach(symbol => symbol.remove());
 
-    const symbols = ['/img/blue.svg', '/img/pink.svg'];
-    const symbolCount = 35;
+    const symbols = ["/img/blue.svg", "/img/pink.svg"];
 
-    for (let i = 0; i < symbolCount; i++) {
-      const symbol = document.createElement('img');
-      const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
-      
-      symbol.src = randomSymbol;
-      symbol.className = 'content-symbol';
-      symbol.alt = '';
-      
-      const posX = Math.random() * 95;
-      const posY = Math.random() * 95;
-      
-      const size = 15 + Math.random() * 25;
-      const delay = Math.random() * 8;
-      const duration = 1.5 + Math.random() * 3;
-      
-      symbol.style.left = `${posX}%`;
-      symbol.style.top = `${posY}%`;
-      symbol.style.width = `${size}px`;
-      symbol.style.animationDelay = `${delay}s`;
-      symbol.style.animationDuration = `${duration}s`;
-      
+    for (let i = 0; i < 35; i++) {
+      const symbol = document.createElement("img");
+      symbol.src = symbols[Math.floor(Math.random() * symbols.length)];
+      symbol.className = "content-symbol";
+      symbol.alt = "";
+      symbol.style.left = `${Math.random() * 95}%`;
+      symbol.style.top = `${Math.random() * 95}%`;
+      symbol.style.width = `${15 + Math.random() * 25}px`;
+      symbol.style.animationDelay = `${Math.random() * 8}s`;
+      symbol.style.animationDuration = `${1.5 + Math.random() * 3}s`;
       content.appendChild(symbol);
     }
   }
 
-  function initializeUpdates() {
-  document.querySelectorAll('.update-header').forEach(header => {
-    header.replaceWith(header.cloneNode(true));
-  });
+  function setActiveButton(page) {
+    menuButtons.forEach(btn => btn.classList.toggle("active", btn.dataset.page === page));
+  }
 
-  document.querySelectorAll('.update-header').forEach(header => {
-    header.addEventListener('click', handleUpdateClick);
-  });
-}
+  function closeMenu() {
+    menu.classList.remove("open");
+    burger.classList.remove("active");
+  }
 
-  function handleUpdateClick(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  toggleUpdate(e.currentTarget);
-}
-
-  function toggleUpdate(header) {
-  const update = header.parentElement;
-  update.classList.toggle('open');
-}
-
-  function changeContent(newContent) {
+  function changeContent(page) {
     content.classList.add("fade-out");
+    setActiveButton(page);
 
     setTimeout(() => {
-      content.innerHTML = newContent;
+      content.innerHTML = pages[page];
+      content.classList.toggle("is-welcome", page === "welcome");
       content.classList.remove("fade-out");
-      content.classList.add("fade-in");
-      
-      setTimeout(() => {
-      if (newContent === pages.welcome) {
-      createContentSymbols();
-      }}, 20);
-      
-      if (newContent.includes("update-header")) {
-        initializeUpdates();
-      }
 
-      setTimeout(() => {
-        content.classList.remove("fade-in");
-      }, 400);
+      if (page === "welcome") {
+        createContentSymbols();
+      }
     }, 300);
   }
-  
-  changeContent(pages.welcome);
+
+  content.addEventListener("click", e => {
+    const header = e.target.closest(".update-header");
+    if (header) {
+      header.parentElement.classList.toggle("open");
+    }
+  });
 
   menuButtons.forEach(button => {
     button.addEventListener("click", () => {
-      const page = button.getAttribute("data-page");
-      changeContent(pages[page]);
-      if (menu.classList.contains("open")) {
-        menu.classList.remove("open");
-        burger.classList.remove("active");
-      }
+      changeContent(button.dataset.page);
+      closeMenu();
     });
   });
 
   logo.addEventListener("click", () => {
-    changeContent(pages.welcome);
-    if (menu.classList.contains("open")) {
-      menu.classList.remove("open");
-      burger.classList.remove("active");
-    }
+    changeContent("welcome");
+    closeMenu();
   });
 
   burger.addEventListener("click", () => {
     menu.classList.toggle("open");
     burger.classList.toggle("active");
   });
+
+  changeContent("welcome");
+
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const plusAssets = ["/img/blue.svg", "/img/pink.svg"];
+    let lastSpawn = 0;
+    let plusIndex = 0;
+
+    document.addEventListener("pointermove", event => {
+      if (event.pointerType === "touch") return;
+      const now = performance.now();
+      if (now - lastSpawn < 48) return;
+      lastSpawn = now;
+
+      const plus = document.createElement("img");
+      plus.src = plusAssets[plusIndex++ % plusAssets.length];
+      plus.alt = "";
+      plus.className = "mouse-plus";
+      plus.style.left = `${event.clientX}px`;
+      plus.style.top = `${event.clientY}px`;
+      plus.style.setProperty("--plus-size", `${12 + Math.random() * 13}px`);
+      plus.style.setProperty("--drift-x", `${Math.round(Math.random() * 54 - 27)}px`);
+      plus.style.setProperty("--spin", `${Math.round(Math.random() * 90 - 45)}deg`);
+      document.body.appendChild(plus);
+      plus.addEventListener("animationend", () => plus.remove(), { once: true });
+    }, { passive: true });
+  }
 });
